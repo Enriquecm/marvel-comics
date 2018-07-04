@@ -21,6 +21,13 @@
 		FB29861820EC4BDA002B7D5B /* MCCoreUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29861720EC4BDA002B7D5B /* MCCoreUtils.swift */; };
 		FB29861B20EC4C16002B7D5B /* MCRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29861A20EC4C16002B7D5B /* MCRouter.swift */; };
 		FB29862120EC58A7002B7D5B /* RouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29862020EC58A7002B7D5B /* RouterTests.swift */; };
+		FB29862320EC5B11002B7D5B /* MCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29862220EC5B11002B7D5B /* MCService.swift */; };
+		FB29862520EC5BE0002B7D5B /* MCNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29862420EC5BE0002B7D5B /* MCNetworkError.swift */; };
+		FB29862720EC5C2F002B7D5B /* MCParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29862620EC5C2F002B7D5B /* MCParameterEncoding.swift */; };
+		FB29862A20EC5CDC002B7D5B /* MCResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29862920EC5CDC002B7D5B /* MCResponse.swift */; };
+		FB29862C20EC6475002B7D5B /* DeadPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29862B20EC6475002B7D5B /* DeadPool.swift */; };
+		FB29863020EC6B00002B7D5B /* MCServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29862F20EC6B00002B7D5B /* MCServiceTests.swift */; };
+		FB29863220EC7353002B7D5B /* MCServiceErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29863120EC7353002B7D5B /* MCServiceErrorHandling.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +68,13 @@
 		FB29861720EC4BDA002B7D5B /* MCCoreUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCCoreUtils.swift; sourceTree = "<group>"; };
 		FB29861A20EC4C16002B7D5B /* MCRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCRouter.swift; sourceTree = "<group>"; };
 		FB29862020EC58A7002B7D5B /* RouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTests.swift; sourceTree = "<group>"; };
+		FB29862220EC5B11002B7D5B /* MCService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCService.swift; sourceTree = "<group>"; };
+		FB29862420EC5BE0002B7D5B /* MCNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCNetworkError.swift; sourceTree = "<group>"; };
+		FB29862620EC5C2F002B7D5B /* MCParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCParameterEncoding.swift; sourceTree = "<group>"; };
+		FB29862920EC5CDC002B7D5B /* MCResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCResponse.swift; sourceTree = "<group>"; };
+		FB29862B20EC6475002B7D5B /* DeadPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadPool.swift; sourceTree = "<group>"; };
+		FB29862F20EC6B00002B7D5B /* MCServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCServiceTests.swift; sourceTree = "<group>"; };
+		FB29863120EC7353002B7D5B /* MCServiceErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCServiceErrorHandling.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +142,9 @@
 			isa = PBXGroup;
 			children = (
 				FB2985EC20EC3EFD002B7D5B /* MarvelComicsTests.swift */,
-				FB2985EE20EC3EFD002B7D5B /* Info.plist */,
 				FB29862020EC58A7002B7D5B /* RouterTests.swift */,
+				FB29862F20EC6B00002B7D5B /* MCServiceTests.swift */,
+				FB2985EE20EC3EFD002B7D5B /* Info.plist */,
 			);
 			path = MarvelComicsTests;
 			sourceTree = "<group>";
@@ -150,6 +165,7 @@
 				FB29861920EC4C04002B7D5B /* Router */,
 				FB29860F20EC46C3002B7D5B /* MCIdentifiers.swift */,
 				FB29861720EC4BDA002B7D5B /* MCCoreUtils.swift */,
+				FB29862420EC5BE0002B7D5B /* MCNetworkError.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -174,6 +190,10 @@
 		FB29860920EC43F0002B7D5B /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				FB29862B20EC6475002B7D5B /* DeadPool.swift */,
+				FB29862620EC5C2F002B7D5B /* MCParameterEncoding.swift */,
+				FB29862220EC5B11002B7D5B /* MCService.swift */,
+				FB29863120EC7353002B7D5B /* MCServiceErrorHandling.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -181,6 +201,7 @@
 		FB29860A20EC440B002B7D5B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FB29862820EC5CD2002B7D5B /* Service */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -224,6 +245,14 @@
 				FB29861A20EC4C16002B7D5B /* MCRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		FB29862820EC5CD2002B7D5B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				FB29862920EC5CDC002B7D5B /* MCResponse.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,13 +387,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB29862720EC5C2F002B7D5B /* MCParameterEncoding.swift in Sources */,
 				FB29861620EC4A86002B7D5B /* MCCharactersViewController.swift in Sources */,
 				FB29861020EC46C3002B7D5B /* MCIdentifiers.swift in Sources */,
+				FB29862C20EC6475002B7D5B /* DeadPool.swift in Sources */,
 				FB29861B20EC4C16002B7D5B /* MCRouter.swift in Sources */,
+				FB29862520EC5BE0002B7D5B /* MCNetworkError.swift in Sources */,
 				FB29860E20EC463A002B7D5B /* MCViewModel.swift in Sources */,
+				FB29862320EC5B11002B7D5B /* MCService.swift in Sources */,
 				FB29861320EC4A0D002B7D5B /* MCSplashViewController.swift in Sources */,
 				FB2985DA20EC3EFB002B7D5B /* MCViewController.swift in Sources */,
 				FB29861820EC4BDA002B7D5B /* MCCoreUtils.swift in Sources */,
+				FB29863220EC7353002B7D5B /* MCServiceErrorHandling.swift in Sources */,
+				FB29862A20EC5CDC002B7D5B /* MCResponse.swift in Sources */,
 				FB2985D820EC3EFB002B7D5B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,6 +408,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB29863020EC6B00002B7D5B /* MCServiceTests.swift in Sources */,
 				FB29862120EC58A7002B7D5B /* RouterTests.swift in Sources */,
 				FB2985ED20EC3EFD002B7D5B /* MarvelComicsTests.swift in Sources */,
 			);
