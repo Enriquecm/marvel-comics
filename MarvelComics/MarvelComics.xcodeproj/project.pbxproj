@@ -28,6 +28,8 @@
 		FB29862C20EC6475002B7D5B /* DeadPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29862B20EC6475002B7D5B /* DeadPool.swift */; };
 		FB29863020EC6B00002B7D5B /* MCServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29862F20EC6B00002B7D5B /* MCServiceTests.swift */; };
 		FB29863220EC7353002B7D5B /* MCServiceErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29863120EC7353002B7D5B /* MCServiceErrorHandling.swift */; };
+		FBAA783320EDB16E001C9AB1 /* MarvelApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA783220EDB16E001C9AB1 /* MarvelApplication.swift */; };
+		FBAA783520EDB18B001C9AB1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA783420EDB18B001C9AB1 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		FB29862B20EC6475002B7D5B /* DeadPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadPool.swift; sourceTree = "<group>"; };
 		FB29862F20EC6B00002B7D5B /* MCServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCServiceTests.swift; sourceTree = "<group>"; };
 		FB29863120EC7353002B7D5B /* MCServiceErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCServiceErrorHandling.swift; sourceTree = "<group>"; };
+		FBAA783220EDB16E001C9AB1 /* MarvelApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelApplication.swift; sourceTree = "<group>"; };
+		FBAA783420EDB18B001C9AB1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				FB2985D720EC3EFB002B7D5B /* AppDelegate.swift */,
+				FBAA783220EDB16E001C9AB1 /* MarvelApplication.swift */,
 				FB29860520EC43CE002B7D5B /* Core */,
 				FB29860A20EC440B002B7D5B /* Model */,
 				FB29860720EC43D9002B7D5B /* Resource */,
@@ -134,6 +139,7 @@
 				FB29860B20EC4415002B7D5B /* User Interfaces */,
 				FB2985DE20EC3EFD002B7D5B /* Assets.xcassets */,
 				FB2985E320EC3EFD002B7D5B /* Info.plist */,
+				FBAA783420EDB18B001C9AB1 /* main.swift */,
 			);
 			path = MarvelComics;
 			sourceTree = "<group>";
@@ -387,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBAA783320EDB16E001C9AB1 /* MarvelApplication.swift in Sources */,
 				FB29862720EC5C2F002B7D5B /* MCParameterEncoding.swift in Sources */,
 				FB29861620EC4A86002B7D5B /* MCCharactersViewController.swift in Sources */,
 				FB29861020EC46C3002B7D5B /* MCIdentifiers.swift in Sources */,
@@ -396,6 +403,7 @@
 				FB29860E20EC463A002B7D5B /* MCViewModel.swift in Sources */,
 				FB29862320EC5B11002B7D5B /* MCService.swift in Sources */,
 				FB29861320EC4A0D002B7D5B /* MCSplashViewController.swift in Sources */,
+				FBAA783520EDB18B001C9AB1 /* main.swift in Sources */,
 				FB2985DA20EC3EFB002B7D5B /* MCViewController.swift in Sources */,
 				FB29861820EC4BDA002B7D5B /* MCCoreUtils.swift in Sources */,
 				FB29863220EC7353002B7D5B /* MCServiceErrorHandling.swift in Sources */,
