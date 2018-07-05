@@ -30,6 +30,15 @@
 		FB29863220EC7353002B7D5B /* MCServiceErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29863120EC7353002B7D5B /* MCServiceErrorHandling.swift */; };
 		FBAA783320EDB16E001C9AB1 /* MarvelApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA783220EDB16E001C9AB1 /* MarvelApplication.swift */; };
 		FBAA783520EDB18B001C9AB1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA783420EDB18B001C9AB1 /* main.swift */; };
+		FBAA783720EDB674001C9AB1 /* MCModelCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA783620EDB674001C9AB1 /* MCModelCharacter.swift */; };
+		FBAA783920EDBA89001C9AB1 /* MCModelImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA783820EDBA89001C9AB1 /* MCModelImage.swift */; };
+		FBAA783B20EDBEEE001C9AB1 /* MCModelComicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA783A20EDBEEE001C9AB1 /* MCModelComicList.swift */; };
+		FBAA783D20EDBF10001C9AB1 /* MCModelComicSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA783C20EDBF10001C9AB1 /* MCModelComicSummary.swift */; };
+		FBAA783F20EDC20E001C9AB1 /* MCModelComic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA783E20EDC20E001C9AB1 /* MCModelComic.swift */; };
+		FBAA784120EDC817001C9AB1 /* MCParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA784020EDC817001C9AB1 /* MCParser.swift */; };
+		FBAA784520EDC881001C9AB1 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA784420EDC881001C9AB1 /* DateHelper.swift */; };
+		FBAA784720EDC8FD001C9AB1 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA784620EDC8FD001C9AB1 /* DateExtensions.swift */; };
+		FBAA784920EDCA02001C9AB1 /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA784820EDCA02001C9AB1 /* ParserTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +88,15 @@
 		FB29863120EC7353002B7D5B /* MCServiceErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCServiceErrorHandling.swift; sourceTree = "<group>"; };
 		FBAA783220EDB16E001C9AB1 /* MarvelApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelApplication.swift; sourceTree = "<group>"; };
 		FBAA783420EDB18B001C9AB1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		FBAA783620EDB674001C9AB1 /* MCModelCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCModelCharacter.swift; sourceTree = "<group>"; };
+		FBAA783820EDBA89001C9AB1 /* MCModelImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCModelImage.swift; sourceTree = "<group>"; };
+		FBAA783A20EDBEEE001C9AB1 /* MCModelComicList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCModelComicList.swift; sourceTree = "<group>"; };
+		FBAA783C20EDBF10001C9AB1 /* MCModelComicSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCModelComicSummary.swift; sourceTree = "<group>"; };
+		FBAA783E20EDC20E001C9AB1 /* MCModelComic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCModelComic.swift; sourceTree = "<group>"; };
+		FBAA784020EDC817001C9AB1 /* MCParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCParser.swift; sourceTree = "<group>"; };
+		FBAA784420EDC881001C9AB1 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		FBAA784620EDC8FD001C9AB1 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		FBAA784820EDCA02001C9AB1 /* ParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,8 +166,9 @@
 			isa = PBXGroup;
 			children = (
 				FB2985EC20EC3EFD002B7D5B /* MarvelComicsTests.swift */,
-				FB29862020EC58A7002B7D5B /* RouterTests.swift */,
 				FB29862F20EC6B00002B7D5B /* MCServiceTests.swift */,
+				FBAA784820EDCA02001C9AB1 /* ParserTests.swift */,
+				FB29862020EC58A7002B7D5B /* RouterTests.swift */,
 				FB2985EE20EC3EFD002B7D5B /* Info.plist */,
 			);
 			path = MarvelComicsTests;
@@ -167,6 +186,7 @@
 		FB29860520EC43CE002B7D5B /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				FBAA784220EDC83D001C9AB1 /* Extensions */,
 				FB29860C20EC4630002B7D5B /* Protocols */,
 				FB29861920EC4C04002B7D5B /* Router */,
 				FB29860F20EC46C3002B7D5B /* MCIdentifiers.swift */,
@@ -200,6 +220,7 @@
 				FB29862620EC5C2F002B7D5B /* MCParameterEncoding.swift */,
 				FB29862220EC5B11002B7D5B /* MCService.swift */,
 				FB29863120EC7353002B7D5B /* MCServiceErrorHandling.swift */,
+				FBAA784020EDC817001C9AB1 /* MCParser.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -208,6 +229,11 @@
 			isa = PBXGroup;
 			children = (
 				FB29862820EC5CD2002B7D5B /* Service */,
+				FBAA783620EDB674001C9AB1 /* MCModelCharacter.swift */,
+				FBAA783A20EDBEEE001C9AB1 /* MCModelComicList.swift */,
+				FBAA783C20EDBF10001C9AB1 /* MCModelComicSummary.swift */,
+				FBAA783E20EDC20E001C9AB1 /* MCModelComic.swift */,
+				FBAA783820EDBA89001C9AB1 /* MCModelImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -259,6 +285,23 @@
 				FB29862920EC5CDC002B7D5B /* MCResponse.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		FBAA784220EDC83D001C9AB1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FBAA784320EDC875001C9AB1 /* Date */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FBAA784320EDC875001C9AB1 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				FBAA784420EDC881001C9AB1 /* DateHelper.swift */,
+				FBAA784620EDC8FD001C9AB1 /* DateExtensions.swift */,
+			);
+			path = Date;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,20 +437,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBAA783320EDB16E001C9AB1 /* MarvelApplication.swift in Sources */,
+				FBAA783B20EDBEEE001C9AB1 /* MCModelComicList.swift in Sources */,
 				FB29862720EC5C2F002B7D5B /* MCParameterEncoding.swift in Sources */,
 				FB29861620EC4A86002B7D5B /* MCCharactersViewController.swift in Sources */,
 				FB29861020EC46C3002B7D5B /* MCIdentifiers.swift in Sources */,
+				FBAA784720EDC8FD001C9AB1 /* DateExtensions.swift in Sources */,
 				FB29862C20EC6475002B7D5B /* DeadPool.swift in Sources */,
 				FB29861B20EC4C16002B7D5B /* MCRouter.swift in Sources */,
 				FB29862520EC5BE0002B7D5B /* MCNetworkError.swift in Sources */,
 				FB29860E20EC463A002B7D5B /* MCViewModel.swift in Sources */,
 				FB29862320EC5B11002B7D5B /* MCService.swift in Sources */,
+				FBAA784120EDC817001C9AB1 /* MCParser.swift in Sources */,
+				FBAA783920EDBA89001C9AB1 /* MCModelImage.swift in Sources */,
 				FB29861320EC4A0D002B7D5B /* MCSplashViewController.swift in Sources */,
 				FBAA783520EDB18B001C9AB1 /* main.swift in Sources */,
 				FB2985DA20EC3EFB002B7D5B /* MCViewController.swift in Sources */,
+				FBAA783F20EDC20E001C9AB1 /* MCModelComic.swift in Sources */,
 				FB29861820EC4BDA002B7D5B /* MCCoreUtils.swift in Sources */,
 				FB29863220EC7353002B7D5B /* MCServiceErrorHandling.swift in Sources */,
+				FBAA783720EDB674001C9AB1 /* MCModelCharacter.swift in Sources */,
 				FB29862A20EC5CDC002B7D5B /* MCResponse.swift in Sources */,
+				FBAA783D20EDBF10001C9AB1 /* MCModelComicSummary.swift in Sources */,
+				FBAA784520EDC881001C9AB1 /* DateHelper.swift in Sources */,
 				FB2985D820EC3EFB002B7D5B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,6 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBAA784920EDCA02001C9AB1 /* ParserTests.swift in Sources */,
 				FB29863020EC6B00002B7D5B /* MCServiceTests.swift in Sources */,
 				FB29862120EC58A7002B7D5B /* RouterTests.swift in Sources */,
 				FB2985ED20EC3EFD002B7D5B /* MarvelComicsTests.swift in Sources */,
