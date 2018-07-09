@@ -10,9 +10,17 @@ import UIKit
 
 class MarvelApplication: UIApplication {
 
-  static var instance: MarvelApplication? {
-    return super.shared as? MarvelApplication
-  }
+    static var instance: MarvelApplication {
+        return super.shared as! MarvelApplication
+    }
 
-  let router = MCRouter()
+    let router = MCRouter()
+    let service: DeadPool = {
+        let errorHandling = MCServiceErrorHandling()
+        let mainService = MCService(serviceError: errorHandling)
+        let deadPool = DeadPool(service: mainService)
+        return deadPool
+    }()
+
+    let imageCache = MCImageCache()
 }

@@ -27,7 +27,7 @@ class MCServiceTests: XCTestCase {
     }
 
     func testCharacters() {
-        deadPool.marvelCharacters(completion: nil)
+        deadPool.marvelCharacters(filterParameters: MCFilterParameters(offset: 0, limit: 20), completion: nil)
         XCTAssertTrue(deadPool.didRequestCharacters, "The request method should be called.")
     }
 
@@ -84,7 +84,7 @@ private class DeadPoolMock: DeadPoolProtocolMock {
         self.service = service
     }
 
-    func marvelCharacters(completion: ((Data?, MCNetworkError?) -> Void)?) {
+    func marvelCharacters(filterParameters: MCFilterParameters, completion: ((Data?, MCNetworkError?) -> Void)?) {
         didRequestCharacters = true
         service.requestHttp(url: nil, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil, completion: nil)
     }

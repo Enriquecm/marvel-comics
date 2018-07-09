@@ -158,6 +158,7 @@
 				FB2985DE20EC3EFD002B7D5B /* Assets.xcassets */,
 				FB2985E320EC3EFD002B7D5B /* Info.plist */,
 				FBAA783420EDB18B001C9AB1 /* main.swift */,
+				FB712CDA20F027540032DC6C /* MarvelComics-Bridging-Header.h */,
 			);
 			path = MarvelComics;
 			sourceTree = "<group>";
