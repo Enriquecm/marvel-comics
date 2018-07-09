@@ -20,6 +20,12 @@ class MCViewController: UIViewController {
         return MCIdentifiers.Storyboard.Main.name
     }
 
+    func showAlert(with title: String?, message: String?, action: UIAlertAction) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+
     private class func initializeViewController() -> UIViewController {
         let storyboard = UIStoryboard.init(name: storyboardName, bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: identifier)

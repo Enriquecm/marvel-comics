@@ -24,6 +24,6 @@ class MCSplashViewController: MCViewController {
 
     @objc
     private func finishSplashPresentation() {
-        MarvelApplication.instance?.router.goToNextScreen()
+        MarvelApplication.instance.router.goToNextScreen()
     }
 }
