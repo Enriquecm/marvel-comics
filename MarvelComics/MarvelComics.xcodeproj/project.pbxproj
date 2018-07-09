@@ -59,6 +59,7 @@
 		FBAA784520EDC881001C9AB1 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA784420EDC881001C9AB1 /* DateHelper.swift */; };
 		FBAA784720EDC8FD001C9AB1 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA784620EDC8FD001C9AB1 /* DateExtensions.swift */; };
 		FBAA784920EDCA02001C9AB1 /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA784820EDCA02001C9AB1 /* ParserTests.swift */; };
+		FBAA784B20EDCFE6001C9AB1 /* MCCharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA784A20EDCFE6001C9AB1 /* MCCharactersViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,7 @@
 		FBAA784420EDC881001C9AB1 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		FBAA784620EDC8FD001C9AB1 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		FBAA784820EDCA02001C9AB1 /* ParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTests.swift; sourceTree = "<group>"; };
+		FBAA784A20EDCFE6001C9AB1 /* MCCharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCCharactersViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 				FB29860C20EC4630002B7D5B /* Protocols */,
 				FB29861920EC4C04002B7D5B /* Router */,
 				FB29860F20EC46C3002B7D5B /* MCIdentifiers.swift */,
+				FB712CEB20F04A650032DC6C /* MCCellProtocol.swift */,
 				FB29861720EC4BDA002B7D5B /* MCCoreUtils.swift */,
 				FB712CF520F05B4B0032DC6C /* MCImageCache.swift */,
 				FB29862420EC5BE0002B7D5B /* MCNetworkError.swift */,
@@ -253,6 +256,7 @@
 		FB29860720EC43D9002B7D5B /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FB712CF920F05FCE0032DC6C /* MCRefreshControl.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -457,6 +461,7 @@
 				TargetAttributes = {
 					FB2985D320EC3EFB002B7D5B = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
 					};
 					FB2985E720EC3EFD002B7D5B = {
 						CreatedOnToolsVersion = 9.3;
@@ -522,6 +527,8 @@
 			files = (
 				FBAA783320EDB16E001C9AB1 /* MarvelApplication.swift in Sources */,
 				FB712D0A20F1CCA30032DC6C /* MCModelEventSummary.swift in Sources */,
+				FB712CEC20F04A650032DC6C /* MCCellProtocol.swift in Sources */,
+				FB712CFC20F1843C0032DC6C /* MCCharacterDetailViewController.swift in Sources */,
 				FB712CE220F038170032DC6C /* MCModelCharacterDataContainer.swift in Sources */,
 				FBAA783B20EDBEEE001C9AB1 /* MCModelComicList.swift in Sources */,
 				FB712CF620F05B4B0032DC6C /* MCImageCache.swift in Sources */,
@@ -538,6 +545,7 @@
 				FB29862520EC5BE0002B7D5B /* MCNetworkError.swift in Sources */,
 				FB29860E20EC463A002B7D5B /* MCViewModel.swift in Sources */,
 				FB29862320EC5B11002B7D5B /* MCService.swift in Sources */,
+				FB712CFE20F1AD820032DC6C /* MCModelStoryList.swift in Sources */,
 				FBAA784120EDC817001C9AB1 /* MCParser.swift in Sources */,
 				FBAA783920EDBA89001C9AB1 /* MCModelImage.swift in Sources */,
 				FB29861320EC4A0D002B7D5B /* MCSplashViewController.swift in Sources */,
@@ -550,6 +558,7 @@
 				FBAA783F20EDC20E001C9AB1 /* MCModelComic.swift in Sources */,
 				FB712CF420F056E60032DC6C /* UIViewExtensions.swift in Sources */,
 				FB29861820EC4BDA002B7D5B /* MCCoreUtils.swift in Sources */,
+				FB712CE920F04A3C0032DC6C /* MCLoadingTableViewCell.swift in Sources */,
 				FB29863220EC7353002B7D5B /* MCServiceErrorHandling.swift in Sources */,
 				FBAA783720EDB674001C9AB1 /* MCModelCharacter.swift in Sources */,
 				FB712CF820F05BD50032DC6C /* UIImageViewExtensions.swift in Sources */,
@@ -559,6 +568,7 @@
 				FBAA784520EDC881001C9AB1 /* DateHelper.swift in Sources */,
 				FB712CD920F024AF0032DC6C /* StringExtensions.swift in Sources */,
 				FB2985D820EC3EFB002B7D5B /* AppDelegate.swift in Sources */,
+				FB712CE520F042810032DC6C /* MCCharacterDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,7 +744,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MarvelComics/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -742,6 +754,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.choynowski.MarvelComics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MarvelComics/MarvelComics-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -751,7 +765,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MarvelComics/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -759,6 +775,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.choynowski.MarvelComics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MarvelComics/MarvelComics-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

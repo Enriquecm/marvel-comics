@@ -33,3 +33,10 @@ extension MCModelImage: Decodable {
         imageExtension = try image.decodeIfPresent(String.self, forKey: .imageExtension)
     }
 }
+
+extension MCModelImage {
+    var completePath: String? {
+        guard let path = path, let imageExtension = imageExtension else { return nil }
+        return path + "." + imageExtension
+    }
+}

@@ -12,3 +12,9 @@ struct MCModelComicSummary: Codable {
     var resourceURI: String?
     var name: String?
 }
+
+extension MCModelComicSummary: MCCharacterSummaryProtocol {
+    var summaryName: String? {
+        return name
+    }
+}
