@@ -60,6 +60,9 @@
 		FBAA784720EDC8FD001C9AB1 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA784620EDC8FD001C9AB1 /* DateExtensions.swift */; };
 		FBAA784920EDCA02001C9AB1 /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA784820EDCA02001C9AB1 /* ParserTests.swift */; };
 		FBAA784B20EDCFE6001C9AB1 /* MCCharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA784A20EDCFE6001C9AB1 /* MCCharactersViewModel.swift */; };
+		FBAFE11A20F1D73C0087892E /* MCPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAFE11920F1D73C0087892E /* MCPresentationAnimator.swift */; };
+		FBAFE11C20F1D8E30087892E /* MCDismissalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAFE11B20F1D8E30087892E /* MCDismissalAnimator.swift */; };
+		FBAFE11E20F1DA0B0087892E /* MCTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAFE11D20F1DA0B0087892E /* MCTransitionDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +143,9 @@
 		FBAA784620EDC8FD001C9AB1 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		FBAA784820EDCA02001C9AB1 /* ParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTests.swift; sourceTree = "<group>"; };
 		FBAA784A20EDCFE6001C9AB1 /* MCCharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCCharactersViewModel.swift; sourceTree = "<group>"; };
+		FBAFE11920F1D73C0087892E /* MCPresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCPresentationAnimator.swift; sourceTree = "<group>"; };
+		FBAFE11B20F1D8E30087892E /* MCDismissalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCDismissalAnimator.swift; sourceTree = "<group>"; };
+		FBAFE11D20F1DA0B0087892E /* MCTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCTransitionDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +263,10 @@
 			isa = PBXGroup;
 			children = (
 				FB712CF920F05FCE0032DC6C /* MCRefreshControl.swift */,
+				FB712D0520F1C2330032DC6C /* MCGradientView.swift */,
+				FBAFE11920F1D73C0087892E /* MCPresentationAnimator.swift */,
+				FBAFE11B20F1D8E30087892E /* MCDismissalAnimator.swift */,
+				FBAFE11D20F1DA0B0087892E /* MCTransitionDelegate.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -526,6 +536,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBAA783320EDB16E001C9AB1 /* MarvelApplication.swift in Sources */,
+				FBAFE11C20F1D8E30087892E /* MCDismissalAnimator.swift in Sources */,
 				FB712D0A20F1CCA30032DC6C /* MCModelEventSummary.swift in Sources */,
 				FB712CEC20F04A650032DC6C /* MCCellProtocol.swift in Sources */,
 				FB712CFC20F1843C0032DC6C /* MCCharacterDetailViewController.swift in Sources */,
@@ -541,6 +552,7 @@
 				FB712CFA20F05FCE0032DC6C /* MCRefreshControl.swift in Sources */,
 				FB29862C20EC6475002B7D5B /* DeadPool.swift in Sources */,
 				FB712CF220F055450032DC6C /* MCCharacterCollectionViewCell.swift in Sources */,
+				FBAFE11A20F1D73C0087892E /* MCPresentationAnimator.swift in Sources */,
 				FB29861B20EC4C16002B7D5B /* MCRouter.swift in Sources */,
 				FB29862520EC5BE0002B7D5B /* MCNetworkError.swift in Sources */,
 				FB29860E20EC463A002B7D5B /* MCViewModel.swift in Sources */,
@@ -550,6 +562,7 @@
 				FBAA783920EDBA89001C9AB1 /* MCModelImage.swift in Sources */,
 				FB29861320EC4A0D002B7D5B /* MCSplashViewController.swift in Sources */,
 				FBAA784B20EDCFE6001C9AB1 /* MCCharactersViewModel.swift in Sources */,
+				FB712D0620F1C2330032DC6C /* MCGradientView.swift in Sources */,
 				FBAA783520EDB18B001C9AB1 /* main.swift in Sources */,
 				FB712D0820F1CC720032DC6C /* MCModelStorySummary.swift in Sources */,
 				FB712CE020F038020032DC6C /* MCModelCharacterDataWrapper.swift in Sources */,
@@ -565,6 +578,7 @@
 				FB712D0C20F1CCBF0032DC6C /* MCModelSeriesSummary.swift in Sources */,
 				FB29862A20EC5CDC002B7D5B /* MCResponse.swift in Sources */,
 				FBAA783D20EDBF10001C9AB1 /* MCModelComicSummary.swift in Sources */,
+				FBAFE11E20F1DA0B0087892E /* MCTransitionDelegate.swift in Sources */,
 				FBAA784520EDC881001C9AB1 /* DateHelper.swift in Sources */,
 				FB712CD920F024AF0032DC6C /* StringExtensions.swift in Sources */,
 				FB2985D820EC3EFB002B7D5B /* AppDelegate.swift in Sources */,
