@@ -12,8 +12,19 @@ struct MCFilterParameters {
 
     var offset: Int
     var limit: Int
+    var nameStartsWith: String?
+
+    init(offset: Int, limit: Int, nameStartsWith: String? = nil) {
+        self.offset = offset
+        self.limit = limit
+        self.nameStartsWith = nameStartsWith
+    }
 
     func parameters() -> MCParameters {
-        return ["offset": offset, "limit": limit]
+        var parameters: MCParameters = ["offset": offset, "limit": limit]
+        if let name = nameStartsWith {
+            parameters["nameStartsWith"] = name
+        }
+        return parameters
     }
 }

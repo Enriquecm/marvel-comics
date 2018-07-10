@@ -12,7 +12,7 @@ class MCCharactersViewController: MCViewController {
 
     // MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
-//    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar!
 
     @IBOutlet var searchBarCharacters: UISearchBar! {
         didSet {
@@ -33,8 +33,14 @@ class MCCharactersViewController: MCViewController {
         super.viewDidLoad()
         setupRefreshControl()
         setupTableView()
+        setupSearchBar()
         setupUI()
         setupViewModel()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        searchBar.resignFirstResponder()
     }
 
     // MARK: Methods
@@ -50,6 +56,10 @@ class MCCharactersViewController: MCViewController {
         }
         tableView.dataSource = self
         tableView.delegate = self
+    }
+
+    private func setupSearchBar() {
+        searchBar.delegate = self
     }
 
     private func setupUI() {
@@ -69,6 +79,7 @@ class MCCharactersViewController: MCViewController {
 
         viewModel.onDataSourceFailed = { [weak self] errorMessage in
             DispatchQueue.main.async {
+                self?.searchBar.resignFirstResponder()
                 let action = UIAlertAction(title: "Try again", style: .default) { _ in
                     self?.refreshFeed()
                 }
@@ -114,6 +125,17 @@ class MCCharactersViewController: MCViewController {
     }
 }
 
+extension MCCharactersViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.searchCharacter(withName: searchBar.text)
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        viewModel.setupForNoSearching()
+    }
+}
+
 extension MCCharactersViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfSections()
@@ -155,6 +177,10 @@ extension MCCharactersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard viewModel.isLoadingIndexPath(indexPath) else { return }
         viewModel.fetchNextPage()
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        searchBar.resignFirstResponder()
     }
 }
 

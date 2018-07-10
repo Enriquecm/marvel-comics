@@ -17,6 +17,7 @@ class MCCharacterDetailViewController: MCViewController {
             setupBackgroundShadow()
         }
     }
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageViewBackground: UIImageView!
     @IBOutlet weak var imageViewDetail: UIImageView!
     @IBOutlet weak var labelName: UILabel!
@@ -27,12 +28,21 @@ class MCCharacterDetailViewController: MCViewController {
     fileprivate lazy var viewModel: MCCharacterDetailViewModel? = {
         return baseViewModel as? MCCharacterDetailViewModel
     }()
+    private var childScrollingDownDueToParent = false
+    private var childScrollView: UIScrollView {
+        return tableView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupScrollView()
         setupTableView()
         setupUI()
         setupViewModel()
+    }
+
+    private func setupScrollView() {
+        scrollView.delegate = self
     }
 
     private func setupTableView() {
@@ -89,5 +99,36 @@ extension MCCharacterDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         // TODO: Go to information detail
+    }
+}
+
+extension MCCharacterDetailViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ _scrollView: UIScrollView) {
+        let parentViewMaxContentYOffset = scrollView.contentSize.height - scrollView.frame.height
+        if _scrollView.panGestureRecognizer.translation(in: _scrollView).y < 0 {
+            // Going up
+            if _scrollView == childScrollView {
+                if scrollView.contentOffset.y < parentViewMaxContentYOffset && !childScrollingDownDueToParent {
+
+                    scrollView.contentOffset.y = min(scrollView.contentOffset.y + childScrollView.contentOffset.y, parentViewMaxContentYOffset)
+                    childScrollView.contentOffset.y = 0
+                }
+            }
+        } else {
+            if _scrollView == childScrollView {
+                if childScrollView.contentOffset.y < 0 && scrollView.contentOffset.y > 0 {
+                    scrollView.contentOffset.y = max(scrollView.contentOffset.y - abs(childScrollView.contentOffset.y), 0)
+                }
+            }
+            if _scrollView == scrollView {
+                if childScrollView.contentOffset.y > 0 && scrollView.contentOffset.y < parentViewMaxContentYOffset {
+
+                    childScrollingDownDueToParent = true
+                    childScrollView.contentOffset.y = max(childScrollView.contentOffset.y - (parentViewMaxContentYOffset - scrollView.contentOffset.y), 0)
+                    scrollView.contentOffset.y = parentViewMaxContentYOffset
+                    childScrollingDownDueToParent = false
+                }
+            }
+        }
     }
 }

@@ -26,6 +26,7 @@ final class MCCharactersViewModel: MCViewModel {
         }
     }
 
+    private(set) var nameToSearch: String?
     private var currentOffset = 1
     let title = "Marvel Characterss"
 
@@ -41,7 +42,7 @@ final class MCCharactersViewModel: MCViewModel {
     }
 
     func loadFeed(forceRefresh: Bool = false) {
-        let filter = MCFilterParameters(offset: currentOffset, limit: 20)
+        let filter = MCFilterParameters(offset: currentOffset, limit: 20, nameStartsWith: nameToSearch)
         service.marvelCharacters(filterParameters: filter) { [weak self] (data, error) in
             guard let data = data, error == nil else {
                 self?.onDataSourceFailed?(error?.message)
@@ -77,6 +78,18 @@ final class MCCharactersViewModel: MCViewModel {
     func isLoadingIndexPath(_ indexPath: IndexPath) -> Bool {
         guard shouldLoadNextPage else { return false }
         return indexPath.row == dataSource.count
+    }
+
+    // MARK: Search methods
+    func searchCharacter(withName name: String?) {
+        guard let name = name, name != "" else { return }
+        nameToSearch = name
+        loadFeed(forceRefresh: true)
+    }
+
+    func setupForNoSearching() {
+        nameToSearch = nil
+        loadFeed(forceRefresh: true)
     }
 
     // MARK: Data source methods
