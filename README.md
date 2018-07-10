@@ -1,6 +1,6 @@
 # Marvel Comics
 
-[![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg?style=flat)](http://www.apple.com/ios/) [![Platform](https://img.shields.io/badge/platform-Android-lightgrey.svg?style=flat)](http://www.apple.com/ios/) [![Swift Version](https://img.shields.io/badge/Swift-4.1-orange.svg)]() 
+[![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg?style=flat)](http://www.apple.com/ios/) [![Swift Version](https://img.shields.io/badge/Swift-4.1-orange.svg)]() 
 
 
 This app allows viewing a list of Marvel Characters.
@@ -78,6 +78,11 @@ viewModel.onInformationFailed = { error in
   ...
 }
 ```
+
+
+## Test Coverage
+Coverage Status: 55.02%
+
 
 ## Authors
 
