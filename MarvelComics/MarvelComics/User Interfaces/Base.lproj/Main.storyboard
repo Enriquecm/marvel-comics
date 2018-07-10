@@ -19,19 +19,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sVE-aP-VEJ">
-                                <rect key="frame" x="87" y="233.5" width="200" height="200"/>
-                                <color key="backgroundColor" red="0.55294117649999996" green="0.7725490196" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="marvel-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Dii-TQ-eDP">
+                                <rect key="frame" x="50" y="264.5" width="275" height="137.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="Ct6-Fd-ZDn"/>
-                                    <constraint firstAttribute="height" constant="200" id="zz1-xx-Wjq"/>
+                                    <constraint firstAttribute="width" secondItem="Dii-TQ-eDP" secondAttribute="height" multiplier="2:1" id="GO2-A3-Z1M"/>
                                 </constraints>
-                            </view>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.85882352939999995" green="0.2156862745" blue="0.19215686269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="sVE-aP-VEJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9dc-r5-GA7"/>
-                            <constraint firstItem="sVE-aP-VEJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pzt-yE-tby"/>
+                            <constraint firstItem="Dii-TQ-eDP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Pqw-y2-EDa"/>
+                            <constraint firstItem="Dii-TQ-eDP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="b5m-Jq-mKP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Dii-TQ-eDP" secondAttribute="trailing" constant="50" id="puU-tr-gd7"/>
+                            <constraint firstItem="Dii-TQ-eDP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="wIk-gs-Gzf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -751,6 +751,7 @@
     <resources>
         <image name="icon-close" width="44" height="36"/>
         <image name="image-character" width="192" height="191"/>
+        <image name="marvel-logo" width="600" height="241"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.2274509804" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>
