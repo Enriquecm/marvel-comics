@@ -74,7 +74,7 @@ final class MCService {
 
 extension MCService: MCServiceProtocol {
 
-    func requestHttp(url: MCURLConvertible?, method: MCHTTPMethod = .get, parameters: MCParameters? = nil, encoding: MCParameterEncoding = URLEncoding.customQueryString, headers: MCHTTPHeaders? = nil, completion: MCRequestResponse) {
+    func requestHttp(url: MCURLConvertible?, method: MCHTTPMethod = .get, parameters: MCParameters? = nil, encoding: MCParameterEncoding = URLEncoding.default, headers: MCHTTPHeaders? = nil, completion: MCRequestResponse) {
 
         MCLog(from: "REQUEST", title: "Endpoint: \(url ?? "NO URL")")
         MCLog(from: "REQUEST", title: "Method: \(method)")

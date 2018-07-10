@@ -18,10 +18,6 @@ public enum MCHTTPMethod: String {
 
 public typealias MCParameters = [String: Any]
 
-public enum Customize {
-    case none, reflection
-}
-
 public protocol MCParameterEncoding {
 
     /// Creates a URL request by encoding parameters and applying them onto an existing request.
@@ -50,25 +46,9 @@ public struct URLEncoding: MCParameterEncoding {
     /// Returns a default `URLEncoding` instance.
     public static var `default`: URLEncoding { return URLEncoding() }
 
-    public static var customQueryString: URLEncoding { return URLEncoding(customize: .reflection) }
-
-    public let customize: Customize
-
-    public init(customize: Customize = .none) {
-        self.customize = customize
-    }
-
     // MARK: Encoding
 
     public func urlEncode(_ url: String, method: MCHTTPMethod, with parameters: MCParameters?) -> URL? {
-        var url = url
-        if customize == .reflection {
-            // Encodes parameters in URL
-            if method.encodesParametersInURL() {
-                url = url.reflectionEncode(parameters: parameters)
-            }
-        }
-
         let encodedURL = url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) ?? url
         return URL(string: encodedURL)
     }
@@ -80,8 +60,7 @@ public struct URLEncoding: MCParameterEncoding {
         if let method = MCHTTPMethod(rawValue: urlRequest.httpMethod ?? "GET"), method.encodesParametersInURL() {
             guard let url = urlRequest.url else { return urlRequest }
 
-            if customize != .reflection,
-                var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
+            if var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
                 !parameters.isEmpty {
 
                 let percentEncodedQuery = (urlComponents.percentEncodedQuery.map { $0 + "&" } ?? "") + query(parameters)
@@ -187,173 +166,7 @@ public struct URLEncoding: MCParameterEncoding {
     }
 }
 
-// MARK: - JSONEncoding
-
-public struct JSONEncoding: MCParameterEncoding {
-
-    // MARK: Properties
-
-    /// Returns a `JSONEncoding` instance with default writing options.
-    public static var `default`: JSONEncoding { return JSONEncoding() }
-
-    public static var prettyPrinted: JSONEncoding { return JSONEncoding(options: .prettyPrinted) }
-
-    public static var customQueryString: JSONEncoding { return JSONEncoding(customize: .reflection) }
-
-    public let options: JSONSerialization.WritingOptions
-    public let customize: Customize
-
-    public init(customize: Customize = .none, options: JSONSerialization.WritingOptions = []) {
-        self.options = options
-        self.customize = customize
-    }
-
-    // MARK: Encoding
-
-    public func urlEncode(_ url: String, method: MCHTTPMethod, with parameters: MCParameters?) -> URL? {
-        var url = url
-        if customize == .reflection {
-            // Encodes parameters in URL
-            if method.encodesParametersInURL() {
-                url = url.reflectionEncode(parameters: parameters)
-            }
-        }
-        guard let encodedURL = url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) else { return nil }
-
-        return URL(string: encodedURL)
-    }
-
-    public func encode(_ urlRequest: URLRequest, with parameters: MCParameters?) -> URLRequest {
-        var urlRequest = urlRequest
-
-        guard let parameters = parameters else { return urlRequest }
-        guard let method = MCHTTPMethod(rawValue: urlRequest.httpMethod ?? "GET"), !method.encodesParametersInURL() else {
-            return urlRequest
-        }
-
-        do {
-            let data = try JSONSerialization.data(withJSONObject: parameters, options: options)
-
-            if urlRequest.value(forHTTPHeaderField: "Content-Type") == nil {
-                urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            }
-
-            urlRequest.httpBody = data
-        } catch {
-            return urlRequest
-        }
-
-        return urlRequest
-    }
-}
-
-// MARK: - ArrayEncoding
-private let MCArrayParametersKey = "MCArrayParametersKey"
-
-public struct ArrayEncoding: MCParameterEncoding {
-
-    // MARK: Properties
-
-    /// Returns a `ArrayEncoding` instance with default writing options.
-    public static var `default`: ArrayEncoding { return ArrayEncoding() }
-
-    public static var prettyPrinted: ArrayEncoding { return ArrayEncoding(options: .prettyPrinted) }
-
-    public static var customQueryString: ArrayEncoding { return ArrayEncoding(customize: .reflection) }
-
-    public let options: JSONSerialization.WritingOptions
-    public let customize: Customize
-
-    public init(customize: Customize = .none, options: JSONSerialization.WritingOptions = []) {
-        self.options = options
-        self.customize = customize
-    }
-
-    public func urlEncode(_ url: String, method: MCHTTPMethod, with parameters: MCParameters?) -> URL? {
-        var url = url
-        if customize == .reflection {
-            // Encodes parameters in URL
-            if method.encodesParametersInURL() {
-                url = url.reflectionEncode(parameters: parameters)
-            }
-        }
-        guard let encodedURL = url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) else { return nil }
-
-        return URL(string: encodedURL)
-    }
-
-    public func encode(_ urlRequest: URLRequest, with parameters: MCParameters?) -> URLRequest {
-        var urlRequest = urlRequest
-
-        guard let parameters = parameters, let array = parameters[MCArrayParametersKey] else {
-            return urlRequest
-        }
-        guard let method = MCHTTPMethod(rawValue: urlRequest.httpMethod ?? "GET"), !method.encodesParametersInURL() else {
-            return urlRequest
-        }
-
-        do {
-            let data = try JSONSerialization.data(withJSONObject: array, options: options)
-
-            if urlRequest.value(forHTTPHeaderField: "Content-Type") == nil {
-                urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            }
-
-            urlRequest.httpBody = data
-        } catch {
-            return urlRequest
-        }
-
-        return urlRequest
-    }
-}
-
 // MARK: - Custom Extensions
-
-/// Extension that allows an array be sent as a request parameters
-extension Array {
-    func asParameters() -> MCParameters {
-        return [MCArrayParametersKey: self]
-    }
-}
-
-extension NSArray {
-    func asParameters() -> MCParameters {
-        return [MCArrayParametersKey: self]
-    }
-}
-
-extension String {
-    func reflectionEncode(parameters: MCParameters?) -> String {
-        guard let parameters = parameters else { return self }
-
-        var strUrl = self
-        for (key, value) in parameters {
-
-            let strKey = String(describing: key)
-            var strValue = ""
-
-            if let array = value as? [Any] {
-                // For array objects
-                for (index, arrayValue) in array.enumerated() {
-
-                    let currentValue = String(describing: arrayValue)
-                    strValue = strValue.appendingFormat("%@=%@", strKey, currentValue)
-                    if index != (array.count - 1) {
-                        strValue = strValue.appending("&")
-                    }
-                }
-            } else {
-                // For any objects
-                strValue = String(describing: value)
-            }
-
-            strUrl = strUrl.replacingOccurrences(of: "{" + strKey + "}", with: strValue)
-        }
-
-        return strUrl
-    }
-}
 
 extension NSNumber {
     fileprivate var isBool: Bool { return CFBooleanGetTypeID() == CFGetTypeID(self) }

@@ -25,11 +25,4 @@ class DateHelper {
         format.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         return format
     }()
-
-    lazy var shortDateFormatter: DateFormatter = {
-        let format = DateFormatter()
-        format.calendar = DateHelper.shared.calendar
-        format.dateFormat = "dd/MM/yyyy"
-        return format
-    }()
 }
