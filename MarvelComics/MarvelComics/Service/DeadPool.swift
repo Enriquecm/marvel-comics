@@ -19,8 +19,8 @@ final class DeadPool: DeadPoolProtocol {
 
     private let urlServer = URL(string: "http://gateway.marvel.com/v1/public")
     private let currentService: MCServiceProtocol
-    private let prKey = "813714b14e5d0629eb714d347ad46d7c28fe794e"
-    private let apiKey = "4750aee883492ab9eb6d8dab536f2e53"
+    private let prKey = MCApiKeys().privateKey
+    private let apiKey = MCApiKeys().publicKey
 
     init(service: MCServiceProtocol) {
         currentService = service
